@@ -119,7 +119,16 @@ print()
 print(f"Phone: {HomePhone:<10s} (H)")
 print(f"       {CellPhone:<10s} (C)")
 print()
-print(f"Site #:{SiteNum:<3d}: Member type: {MemType:<}")
+print(f"Site #:{SiteNum:<3d}: Member type: {MemTypeName:<}")
+print()
+print(f"Alternate members: {NumAltMembers:>2d}")
+print(f"Weekly site cleaning: {CleanAns:>3s}")
+print(f"Video surveillance: {VideoAns:>3s}")
+print()
+SiteChargeDsp = "${:,.2f}".format(SiteCharge)
+print(f"Site charges: {SiteChargeDsp:<6s}  ")
+ExtraChargeDsp = "${:,.2f}".format(ExtraCharge)
+print(f"Extra charges: {ExtraChargeDsp:<5s} ")
 
 
 # Write the values to a data file for storage.

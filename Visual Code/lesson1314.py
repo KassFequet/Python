@@ -61,7 +61,7 @@ for CelTemp in range(-100, 100):
    
 print(f" --------------------")
 '''
-
+'''
 print("Temperature Conversion Chart")
 print()
 print("Celsius Fahrenheit Kelvin         Message")
@@ -89,7 +89,7 @@ for CelTemp in range(-100, 100):
     print(f" {CelTemp:>4d}     {FahTempDsp:>6s}     {KelTempDsp:>6s}  {Msg:<22s}")
 
 print("-------------------------------------------------")
-
+'''
 
 '''
 LoanAmt = input("Enter the loan amount: ")
@@ -115,3 +115,67 @@ for Years in range(1,11):
 
 print(f"   ------------------------------------------")
 '''
+
+while True:
+    # Gather user inputs
+    CusFirName = input("Enter the customer's first name (or type 'END' to exit): ")
+    if CusFirName.upper() == "END":
+        break
+    CusLasName = input("Enter the customer's last name: ")
+    VacationDest = input("Enter the vacation destination: ")
+    DepartureDate = input("Enter the departure date (YYYY-MM-DD): ")
+    NumPersons = int(input("Enter the number of persons: "))
+    CostPerWeek = float(input("Enter the cost per week: "))
+    NumWeeks = int(input("Enter the number of weeks: "))
+    ConnectorFlight = input("Does the customer need a connector flight to Toronto (Y or N): ").upper()
+
+    # Calculate vacation cost
+    VacationCost = NumPersons * CostPerWeek * NumWeeks
+    ConnectorFlightCost = 350.00 * NumPersons if ConnectorFlight == 'Y' else 0.00
+    Subtotal = VacationCost + ConnectorFlightCost
+    SalesTax = Subtotal * 0.13
+    TotalCost = Subtotal + SalesTax
+
+    # Apply discount if applicable
+    Discount = 0.00
+    if TotalCost > 2000.00 or NumWeeks > 2:
+        Discount = VacationCost * 0.05
+        TotalCost -= Discount
+
+    # Display the gathered information
+    print("\nCustomer Vacation Details")
+    print("-------------------------")
+    print(f"Customer Name:           {CusFirName} {CusLasName}")
+    print(f"Vacation Destination:    {VacationDest}")
+    print(f"Departure Date:          {DepartureDate}")
+    print(f"Number of Persons:       {NumPersons}")
+    print(f"Cost Per Week:           ${CostPerWeek:,.2f}")
+    print(f"Number of Weeks:         {NumWeeks}")
+    print(f"Connector Flight to Toronto: {ConnectorFlight}")
+    print(f"Connector Flight Cost:   ${ConnectorFlightCost:,.2f}")
+
+    # Display calculated results
+    print("\nCost Breakdown")
+    print("--------------")
+    print(f"Vacation Cost:           ${VacationCost:,.2f}")
+    print(f"Subtotal:                ${Subtotal:,.2f}")
+    print(f"Sales Tax (13%):         ${SalesTax:,.2f}")
+    if Discount > 0:
+        print(f"Discount (5%):           -${Discount:,.2f}")
+    print(f"Total Cost:              ${TotalCost:,.2f}")
+
+    # Calculate and display payment options
+    print("\nPayment Options")
+    print("---------------------------")
+    print(f"# Payments:          ${TotalCost:,.2f}      Monthly Payments:   ")
+
+    for months in [3, 6, 9, 12, 15]:
+        Interest = TotalCost * 0.065 * (months / 12)
+        TotalWithInterest = TotalCost + Interest
+        MonthlyPayment = TotalWithInterest / months
+        print(f"{months}              {MonthlyPayment:,.2f}")
+
+    # Ask if the user wants to continue
+    continue_choice = input("\nWould you like to enter another customer? (Y/N): ").upper()
+    if continue_choice != 'Y':
+        break
