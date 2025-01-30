@@ -48,7 +48,7 @@ for CelTemp in range(-20, 31):
    
 print(f" -------------------------")
 '''
-
+'''
 print(f" Celsius Fahrenheit Kelvin")
 print(f" -------------------------------------------------")
  
@@ -60,3 +60,58 @@ for CelTemp in range(-100, 100):
     print(f" {CelTemp:>3d}          {FahTempDsp:>4s}")
    
 print(f" --------------------")
+'''
+
+print("Temperature Conversion Chart")
+print()
+print("Celsius Fahrenheit Kelvin         Message")
+print("-------------------------------------------------")
+
+for CelTemp in range(-100, 100):
+    #if you want to go by increments other than 1 you can add ,5 after the numbers. (-100, 100, 5), would go by increments of 5:
+    FahTemp = (9 / 5 * CelTemp) + 32
+    KelTemp = CelTemp + 273.15
+
+    Msg = ""
+    if CelTemp == -90:
+        Msg = "Lowest Recorded Temperature"
+    elif CelTemp == 0:
+        Msg = "Freezing Point of Water"
+    elif CelTemp == 20:
+        Msg = "Average Room Temperature"
+    elif CelTemp == 100:
+        Msg = "Boiling Point of Water"
+    #else:
+    #Msg = ""
+
+    FahTempDsp = "{:.1f}".format(FahTemp)
+    KelTempDsp = "{:.1f}".format(KelTemp)
+    print(f" {CelTemp:>4d}     {FahTempDsp:>6s}     {KelTempDsp:>6s}  {Msg:<22s}")
+
+print("-------------------------------------------------")
+
+
+'''
+LoanAmt = input("Enter the loan amount: ")
+LoanAmt = float(LoanAmt)
+Reason = input("Enter the reason for the loan: ")
+
+LoanAmtDsp = "${:,.2f}".format(LoanAmt)
+print(f"Loan Options for 10 Years on {LoanAmtDsp:>9s}")
+print()
+print(f"   Years   Interest   Total Amt   Mon Payment")
+print(f"   ------------------------------------------")
+
+for Years in range(1,11):
+    Interest = LoanAmt * .065 * Years
+    TotAmt = LoanAmt + Interest
+    Months = Years * 12
+    MonPay = TotAmt / Months
+
+    InterestDsp = "${:,.2f}".format(Interest)
+    TotAmtDsp = "${:,.2f}".format(TotAmt)
+    MonPayDsp = "${:,.2f}".format(MonPay)
+    print(f" {Years:>2d}    {InterestDsp:>9s}    {TotAmtDsp:>9s}    {MonPayDsp:>9s}")
+
+print(f"   ------------------------------------------")
+'''
