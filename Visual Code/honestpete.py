@@ -19,7 +19,7 @@ CostLabor = 1248.00
 CostParts = 1142.00
 TotDis = 25.00
 HST = 58.50
-TotDue = 1423.50
+TotDue = 1243.50
  
 # Display results as per printer spacing chart provided.
 print()
@@ -48,7 +48,7 @@ print(f"                                                     HST:  {HSTDsp:>9s}"
 print(f"                                                           ---------")
  
 TotDueDsp = "${:,.2f}".format(TotDue)
-print(f"                                           Invoice Total:  {TotDueDsp:>9s}")
+print(f"                                           Invoice Total:  {TotDueDsp:<19s}")
 print(f"  ------------------------------------------------------------------")
 print(f"      Honest Peter's - There to meet the needs of our customers!!")
 print(f"  ------------------------------------------------------------------")
