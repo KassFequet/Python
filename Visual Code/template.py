@@ -1,28 +1,28 @@
-# Description: Template 
-# Author: 
-# Date(s): 
- 
- 
+# Description: Template
+# Author:
+# Date(s):
+
+
 # Define required libraries.
- 
- 
- 
+
+
+
 # Define program constants.
 
- 
+
 
 # Define program functions.
- 
- 
- 
+
+
+
 # Main program starts here.
- 
-   
+
+
 
 # Gather user inputs.
 
- 
- 
+
+
 # Perform required calculations.
 
 
@@ -32,7 +32,7 @@
 
 
 # Write the values to a data file for storage.
- 
- 
- 
+
+
+
 # Any housekeeping duties at the end of the program.

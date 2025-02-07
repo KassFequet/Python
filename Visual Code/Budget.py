@@ -15,10 +15,10 @@ TotExpMth = MorRentCost + FoodCost + CloCost + EntCost
 TotSavMth = TotRevMth - TotExpMth
 
 print()
-PerMorRentSpent = (MorRentCost / TotRevMth) *100 
-PerFoodSpent = (FoodCost / TotRevMth) * 100 
-PerCloSpent = (CloCost / TotRevMth) * 100 
-PerEntSpent = (EntCost / TotRevMth) * 100 
+PerMorRentSpent = (MorRentCost / TotRevMth) *100
+PerFoodSpent = (FoodCost / TotRevMth) * 100
+PerCloSpent = (CloCost / TotRevMth) * 100
+PerEntSpent = (EntCost / TotRevMth) * 100
 
 print()
 print("Total revenue per month:           ", TotRevMth)
@@ -26,11 +26,11 @@ print("Cost of mortgage/rent per month:   ", MorRentCost)
 print("Cost of food per month:            ", FoodCost)
 print("Cost of clothes per month:         ",CloCost)
 print("Cost of entertainment per month:   ", EntCost)
- 
+
 print()
 print("Total expenses per month:          ", TotExpMth)
 print("Total savings per month:           ", TotSavMth)
- 
+
 print()
 print("Percentage of monthly revenue spent on mortgage/rent: ", PerMorRentSpent)
 print("Percentage of monthly revenue spent on food:          ", PerFoodSpent)
