@@ -59,8 +59,10 @@ import datetime
 NightRate = 85.00
 HighNightRate = 105.00
 
-arvdate = input("Enter the arrival date: ")
-depdate = input("Enter the departure date: ")
+print()
+print("The Hotel Reservation Program")
+arvdate = input("Enter the arrival date(YYYY-MM-DD): ")
+depdate = input("Enter the departure date(YYYY-MM-DD): ")
 
 
 arvdatetime = datetime.datetime.strptime(arvdate, "%Y-%m-%d")
@@ -74,15 +76,15 @@ if arvmonth in [7, 8]:  # High season months: July, August
 else:
     rate = NightRate
     
-num_nights = (depdatetime - arvdatetime).days
+NumNights = (depdatetime - arvdatetime).days
 
-total_cost = num_nights * rate
+TotCost = NumNights * rate
 
 print(f"Arrival date:     {arvdatetime.strftime('%B %d, %Y')}")
 print(f"Departure date:   {depdatetime.strftime('%B %d, %Y')}")
-print(f"Number of nights: {num_nights}")
-print(f"Rate per night:   ${rate:,.2f}")
-print(f"Total cost:       ${total_cost:,.2f}")
+print(f"Nightly rate:     ${rate:,.2f}")
+print(f"Total nights:     {NumNights}")
+print(f"Total price:      ${TotCost:,.2f}")
 
 
 
