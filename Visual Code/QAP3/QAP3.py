@@ -1,4 +1,4 @@
-# Description: QAP #3 - Honest Harry Car Sales
+ # Description: QAP #3 - Honest Harry Car Sales
 # Author: Kassaundra Fequet
 # Date(s): February 7/25 -
 
