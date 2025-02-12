@@ -1,30 +1,16 @@
- # Description: QAP #3 - Honest Harry Car Sales
-# Author: Kassaundra Fequet
-# Date(s): February 7/25 -
-
-
-# Define required libraries.
-
-
-
-# Define program constants.
-
-
-
-# Define program functions.
-
-
-
 # Main program starts here.# Description: QAP #3 - Honest Harry Car Sales
 # Author: Kassaundra Fequet
 # Date(s): February 7/25 -
 
 
 # Define required libraries.
-
+import datetime
+import random
+import math
 
 
 # Define program constants.
+MAX_SELL_PRICE = 50000.00
 
 
 
@@ -33,6 +19,8 @@
 
 
 # Main program starts here.
+CurDate = datetime.datetime.now()
+
 allowed_num = set("1234567890")
 allowed_upper_char = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 allowed_upper_lower_char = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
@@ -50,6 +38,9 @@ while True:
             print()
         else:
             break
+
+    if FirstName.upper() == "END":
+        break
         
     while True:
         LastName = input("Enter the customers last name: ").title()
@@ -72,7 +63,7 @@ while True:
             print()
             print("   Data Entry Error - Phone number must contain 10 digits only")
             print()
-        elif set(PhoneNum).issubset(allowed_num) == False:
+        elif PhoneNum.isdigit() == False: 
             print()
             print("   Data Entry Error - Phone number contains invalid characters")
             print()
@@ -94,7 +85,7 @@ while True:
             print()
             print("   Data Entry Error - Plate number must start with 3 letters")
             print()
-        elif set(PlateNum[3:6]).issubset(allowed_num) == False:
+        elif (PlateNum[3:6]).isdigit() == False:
             print()
             print("   Data Entry Error - Plate number must end with 3 numbers")
             print()
@@ -131,25 +122,84 @@ while True:
         
         if CarYear == "":
             print()
-            print("   Data Entry Error - CarYear must be entered ")
+            print("   Data Entry Error - Car year must be entered ")
             print()
-        elif len(PlateNum) != 4:
+        elif len(CarYear) != 4:
             print()
-            print("   Data Entry Error - Car year must be 4 characters only")
+            print("   Data Entry Error - Car year must be 4 digits only")
             print()
-        elif set(CarYear).issubset(allowed_num) == False:
+        elif CarYear.isdigit() == False:
             print()
             print("   Data Entry Error - Car year must be numbers")
+            print()
+        else:
+            break
+    
+    while True:
+        SellPrice = input("Enter the selling price: ")
+    
+        if SellPrice == "":
+            print()
+            print("   Data Entry Error - Sell price must be entered ")
+            print()
+        elif SellPrice.isdigit() == False:
+            print()
+            print("   Data Entry Error - Sell price must be numbers")
+            print()
+        else:
+            SellPrice = float(SellPrice)
+            if SellPrice > MAX_SELL_PRICE:
+                print()
+                print("   Data Entry Error - Sell price cannot exceed $50,000.00")
+                print()
+            else:
+                break
+            
+
+    while True:
+        TradeAmt = input("Enter the amount of the trade in: ")
+
+        if TradeAmt == "":
+            print()
+            print("   Data Entry Error - Trade amount must be entered ")
+            print()
+        elif TradeAmt.isdigit() == False:
+            print()
+            print("   Data Entry Error - Trade amount must be numbers")
+            print()
+        else:
+            TradeAmt = float(TradeAmt)
+            if TradeAmt > SellPrice:
+                print()
+                print("   Data Entry Error - Trade amount cannot exceed the sell price")
+                print()
+            else:
+                break
+
+    while True: 
+        SalesName = input("Enter the salespersons name: ")
+
+        if SalesName == "":
+            print()
+            print("   Data Entry Error - Salespersons name must be entered ")
             print()
         else:
             break
         
 
     # Perform required calculations.
-
+DateDsp = (CurDate.strftime("%B %d, %Y"))
 
 
     # Display results
+
+print()
+print(f"Honest Harry Car Sales                              Invoice Date:  ")
+
+
+
+PhoneNum = "(" + PhoneNum[0:3] + ") " + PhoneNum[3:6] + "-" + PhoneNum[6:10]
+print(PhoneNum)
 
 
 
