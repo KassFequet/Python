@@ -35,7 +35,7 @@ CAN_RATE = .60 #The cancellation fee is 60% of the yearly site charges.
 # Gather user inputs.
 
 print()
-Date = input("Enter the current date(YYYYMMDD):          ")
+Date = input("Enter the current date(YYYY-MM-DD):          ")
 SiteNum = input("Enter the site number (1-100):             ")
 SiteNum = int(SiteNum)
 
@@ -43,8 +43,8 @@ print()
 MemName = input("Enter the members name:                    ")
 StAdd = input("Enter the street address:                  ")
 City = input("Enter the city:                            ")
-Prov = input("Enter the province (XX):                   ")
-PostCode = input("Enter the postal code (X0X0X0):            ")
+Prov = input("Enter the province (XX):                   ").upper()
+PostCode = input("Enter the postal code (X0X0X0):            ").upper()
 
 print()
 HomePhone = input("Enter the home phone number (0000000000):  ")
@@ -65,7 +65,7 @@ else:
     NumSiteCharge = ODD_SITE_RATE
 
 AltMemCharge = ALT_MEM_RATE * NumAltMembers
-SiteCharge = NumSiteCharge * AltMemCharge
+SiteCharge = NumSiteCharge + AltMemCharge
 
 if Clean =="Y":
     CleanCharge = CLEAN_RATE
@@ -112,9 +112,9 @@ print(f"---------------------------------")
 print()
 print(f"Client Name and Address: ")
 print()
-print(f"         {MemName:>24s}")
-print(f"         {StAdd:>24s}")
-print(f"       {City:>15s}, {Prov:>2s} {PostCode:>6s}")
+print(f"         {MemName:<24s}")
+print(f"         {StAdd:<24s}")
+print(f"       {City:<15s}, {Prov:<2s} {PostCode:<6s}")
 print()
 print(f"Phone: {HomePhone:<10s} (H)")
 print(f"       {CellPhone:<10s} (C)")
@@ -143,7 +143,7 @@ print(f"                    -------------")
 TotMonFeeDsp = "${:,.2f}".format(TotMonFee)
 print(f"Total monthly fees:     {TotMonFeeDsp:>9s}")
 TotYearFeeDsp = "${:,.2f}".format(TotYearFee)
-print(f"Total yearly fees:    1234 {TotYearFeeDsp:>10s}")
+print(f"Total yearly fees:         {TotYearFeeDsp:>10s}")
 print()
 MonPayDsp = "${:,.2f}".format(MonPay)
 print(f"Monthly payment:        {MonPayDsp:>9s}")

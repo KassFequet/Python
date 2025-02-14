@@ -80,7 +80,7 @@ for CelTemp in range(-100, 101):
  
 print(f"-------------------------------------------------")
  
- 
+ '''
 LoanAmt = input("Enter the loan amount: ")
 LoanAmt = float(LoanAmt)
 Reason = input("Enter the reason for the loan: ")
@@ -104,4 +104,3 @@ for Years in range(1, 11):
  
 print(f"   ----------------------------------------")
  
-'''
