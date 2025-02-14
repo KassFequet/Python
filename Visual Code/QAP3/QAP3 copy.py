@@ -22,6 +22,7 @@ HIGH_TRAN_FEE = .026
 
 HST_RATE = .15
 
+
 FINANCE_FEE = 39.99
 
 # Define program functions.
@@ -216,7 +217,7 @@ while True:
     if SellPrice < 20000:
         TransFee = LOW_TRAN_FEE * SellPrice
     else:
-        TransFee = HIGH_LIC_FEE * SellPrice
+        TransFee = HIGH_TRAN_FEE * SellPrice
     
     Subtotal = PriAftTrade + LicenseFee + TransFee
     
