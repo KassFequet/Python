@@ -1,10 +1,23 @@
+# Description: Question 6
+# Author: Kassaundra Fequet
+# Date(s): February 18/2025 - 
+
+
+# Define required libraries.
+
+
+
 # Define program constants.
+
+
 
 # Define program functions.
 
+
+
 # Main program starts here.
+
 while True:
-    # Display the menu
     print("Midterm Sprint - Main Menu")
     print("1. Complete a travel claim.")
     print("2. Fun interview question.")
@@ -14,27 +27,33 @@ while True:
     print("6. Quit.")
     
     # Gather user input
-    choice = input("Enter choice (1-6): ")
+    Choice = input("Enter choice (1-6): ")
 
     # Perform required actions based on user choice
-    if choice == '1':
+    if Choice == '1':
         print("This is option 1 from the menu.")
-        # Place the code for "Complete a travel claim" here
-    elif choice == '2':
+        # Place code for complete a travle claim here
+
+    elif Choice == '2':
         print("This is option 2 from the menu.")
-        # Place the code for "Fun interview question" here
-    elif choice == '3':
+        # Place code for fun interview question here
+
+    elif Choice == '3':
         print("This is option 3 from the menu.")
-        # Place the code for "Cool stuff with strings and dates" here
-    elif choice == '4':
+        # Place code for cool stuff with strings and dates here
+
+    elif Choice == '4':
         print("This is option 4 from the menu.")
-        # Place the code for "A little bit of everything" here
-    elif choice == '5':
+        # Place code for a little bit of everything here
+
+    elif Choice == '5':
         print("This is option 5 from the menu.")
-        # Place the code for "Something old, something new" here
-    elif choice == '6':
+        # Place code for something old, something new here
+
+    elif Choice == '6':
         print("Quitting the program. Goodbye!")
         break
+    
     else:
         print("Invalid choice. Please enter a number between 1 and 6.")
 

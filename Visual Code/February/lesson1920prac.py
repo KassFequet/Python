@@ -45,7 +45,7 @@ current_date = datetime.now()
 invoice_age = (current_date - invoice_date).days
 
 # Display results
-print("\nInvoice Details")
+print("Invoice Details")
 print("----------------")
 print(f"Original Amount:          ${invoice_amount:,.2f}")
 print(f"Discount Date:            {discount_date.strftime('%Y-%m-%d')}")
