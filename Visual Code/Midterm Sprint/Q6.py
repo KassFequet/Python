@@ -1,6 +1,6 @@
-# Description: Question 6
+# Description: Question 6 - Menu
 # Author: Kassaundra Fequet
-# Date(s): February 18/2025 - 
+# Date(s): February 18/2025 - February 20/2025
 
 
 # Define required libraries.
@@ -18,18 +18,23 @@
 # Main program starts here.
 
 while True:
-    print("Midterm Sprint - Main Menu")
-    print("1. Complete a travel claim.")
-    print("2. Fun interview question.")
-    print("3. Cool stuff with strings and dates.")
-    print("4. A little bit of everything.")
-    print("5. Something old, something new.")
-    print("6. Quit.")
+    print()
+    print("   Midterm Sprint - Main Menu")
+    print()
+    print("1.  Complete a travel claim.")
+    print("2.  Fun interview question.")
+    print("3.  Cool stuff with strings and dates.")
+    print("4.  A little bit of everything.")
+    print("5.  Something old, something new.")
+    print("6.  Quit.")
+    print()
     
     # Gather user input
-    Choice = input("Enter choice (1-6): ")
+    Choice = input("     Enter choice (1-6): ")
+    print()
 
-    # Perform required actions based on user choice
+    # Perform required calculations
+    
     if Choice == '1':
         print("This is option 1 from the menu.")
         # Place code for complete a travle claim here
