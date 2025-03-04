@@ -35,9 +35,12 @@ while True:
 
     # Perform required calculations
     
+    
+    # Display results
+    
     if Choice == '1':
         print("This is option 1 from the menu.")
-        # Place code for complete a travle claim here
+        # Place code for complete a travel claim here
 
     elif Choice == '2':
         print("This is option 2 from the menu.")
@@ -62,4 +65,9 @@ while True:
     else:
         print("Invalid choice. Please enter a number between 1 and 6.")
 
+
+# Write the values to a data file for storage.
+    
+    
+    
 # Any housekeeping duties at the end of the program.
