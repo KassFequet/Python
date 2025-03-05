@@ -4,67 +4,18 @@
 
 
 # Define required libraries.
-
+from datetime import datetime, timedelta
+import FunLib as FL
 
 
 # Define program constants.
-
+BASE_SAL = 350.00
+SALES_QUOTA = 5000.00
 
 
 # Define program functions.
 
-# Long or complex calculations of a single value can be placed in a function.
-# The resulting value calculated in the function is returned to the program.
-
-# If any variables are required, they must be passed in as parameters.
-# In this example, i will need the Number Grade.
-def LetterGrade(NumGrade):
-    #Convert a number grade to a letter grade.
-    
-    if NumGrade >=80 and NumGrade <= 100:
-        LetterGrade = "A"
-    elif NumGrade >= 70 and NumGrade <= 79:
-        LetterGrade = "B"
-    elif NumGrade >= 60 and NumGrade <= 69:
-        LetterGrade = "C"
-    elif NumGrade >= 50 and NumGrade <= 59:
-        LetterGrade = "D"
-    else:
-        LetterGrade = "F"
-    
-    return LetterGrade
-
-
-def WeekGrossPay(NumHours, PayRate):
-    # Calculate the weekly gross pay based on 1.5 times overtime after 40 hours.
-    
-    if NumHours <= 40:
-        GrossPay = NumHours * PayRate
-    else:
-        RegPay = 40 * PayRate
-        OTPay = (NumHours -40) * (PayRate * 1.5)
-        GrossPay = RegPay + OTPay
-        
-    return GrossPay
-
-def EmpBonus(TotalSales):
-    #Calculate and return the bonus for an employee
-    
-    Bonus = TotalSales * .01
-    if TotalSales < 5000.00:
-        Bonus = 0
-    elif TotalSales > 100000.00:
-        Bonus += 500.00
-        
-    return Bonus
-    
-def TrainHeart(Age, RestHeartRate):
-    #Calculate the ideal training heart rate for a person.
-
-    TrainHeartRate = (((220 - Age) - RestHeartRate) * .60) + RestHeartRate
-
-    return TrainHeartRate
-   
+#Imported from FunLib file.
 
 
 # Main program starts here.
@@ -113,8 +64,36 @@ while True:
     TrainingHeart = TrainHeart(Age, RestHeartRate)
     print(TrainingHeart)
     
+    purchase_date = "2022-02-14"
+    print(PaymentDate(purchase_date))  # Output: 2022-03-01
+
+    purchase_date = "2022-02-26"
+    print(PaymentDate(purchase_date))  # Output: 2022-04-01
+    
+    # Example usage
+    number = 42
+    result = IsEven(number)
+    print(f"Is {number} even? {result}")
+
+    number = 33
+    result = IsEven(number)
+    print(f"Is {number} even? {result}")
+    
+    PurDate = datetime.datetime.now()
+    
+    FirstPayDate = GetPayDate(PurDate)
+    
+    print(FirstPayDate)
 
 
+    #Test the GrossDraw() function
+    TotSales = 6000.00
+    
+    
+    
+    GrossPay =FL.GrossDraw(TotSales)
+    print(GrossPay)
+    
     # Write the values to a data file for storage.
     
     Cont = input("Press Enter to continue.")
