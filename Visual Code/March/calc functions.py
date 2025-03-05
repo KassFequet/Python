@@ -58,6 +58,14 @@ def EmpBonus(TotalSales):
         
     return Bonus
     
+def TrainHeart(Age, RestHeartRate):
+    #Calculate the ideal training heart rate for a person.
+
+    TrainHeartRate = (((220 - Age) - RestHeartRate) * .60) + RestHeartRate
+
+    return TrainHeartRate
+   
+
 
 # Main program starts here.
 while True:
@@ -88,7 +96,7 @@ while True:
     
     GrossPay = WeekGrossPay(Hours, Rate)
     print(GrossPay)
-    '''
+    
     
     #Test the EmpBonus() function.
     Sales = 50000.00
@@ -96,9 +104,15 @@ while True:
     Bonus = EmpBonus(Sales)
     print(Bonus)
     
-    
+    '''
     # Display results
+    Age = 25
+    RestHeartRate = 80
 
+
+    TrainingHeart = TrainHeart(Age, RestHeartRate)
+    print(TrainingHeart)
+    
 
 
     # Write the values to a data file for storage.
