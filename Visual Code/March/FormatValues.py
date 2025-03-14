@@ -78,3 +78,7 @@ def FDateL(DateValue):
     DateValueStr = DateValue.strftime("%A, %B %d, %Y")
 
     return DateValueStr
+
+def fPhone14(PhoneNumber):
+    
+    Phone14 = "(" + PhoneNumber)"
