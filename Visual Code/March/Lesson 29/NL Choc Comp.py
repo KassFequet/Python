@@ -6,24 +6,43 @@
 # Define required libraries.
 import datetime
 import FormatValues as FV
+import sys
+import time
+import os
 
 
 # Define program constants.
-CLAIM_NUM = 34
-HST_RATE = .15
+
+file_path = "/Users/kassaundrafequet/Desktop/Python/Visual Code/March/Lesson 29/Def.dat"
+with open(file_path, "r") as f:  # Can use single quote or double quote. Doesn't matter. A mode r is used to read a file
+    CLAIM_NUM = int(f.readline())  # Any value read from a file is a string. Must convert to the correct data type.
+    HST_RATE = float(f.readline())
+#Open the defaults file and read the values into variables.
+#f = open("Def.dat", "r") #Can use single quote or double quote. Doesnt matter. A mode r is used to read a file
+#CLAIM_NUM = int(f.readline()) #Any value read from a file is a string. Must convert to the correct data type.
+#HST_RATE = float(f.readline())
+#f.close()
 
 CUR_DATE = datetime.datetime.now()
 
 
 # Define program functions.
-
+def ProgressBar(iteration, total, prefix='', suffix='', length=30, fill='█'):
+    # Generate and display a progress bar with % complete at the end.
+ 
+    percent = ("{0:.1f}").format(100 * (iteration / float(total)))
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + '-' * (length - filled_length)
+    sys.stdout.write(f'\r{prefix} |{bar}| {percent}% {suffix}')
+    sys.stdout.flush()
 
 
 # Main program starts here.
 while True:
 
 
-    # Gather user inputs.
+    # Clear the screen and Gather user inputs.
+    os.system("cls" if os.name == "nt" else "clear")
     print()
     EmpNum = input("Enter the employee number (END to finish): ").upper()
     if EmpNum == "END":
@@ -84,6 +103,19 @@ while True:
     
     f.close()
 
+
+    # Display a Progress Bar to let the user know data is saved.
+    print()
+ 
+    TotalIterations = 30 # The more iterations, the more time is takes.
+    Message = "Saving Movie Data ..."
+ 
+    for i in range(TotalIterations + 1):
+        time.sleep(0.1)  # Simulate some work
+        ProgressBar(i, TotalIterations, prefix=Message, suffix='Complete', length=50)
+
+    print()
+ 
     #Every value here must be a string so either str it or format it.
     
     #Display a message for the user to let them know the data is saved.
@@ -95,3 +127,15 @@ while True:
     CLAIM_NUM += 1
     
 # Any housekeeping duties at the end of the program.
+#Write the values back to the default file. Note the use of "w" to overwite the \n so that each value is placed on a seperate line. 
+
+file_path = "/Users/kassaundrafequet/Desktop/Python/Visual Code/March/Lesson 29/Def.dat"
+with open(file_path, "w") as f:  # Can use single quote or double quote. Doesn't matter. A mode r is used to read a file
+    f.write("{CLAIM_NUM}\n")
+    f.write("{HST_RATE}\n")
+    f.close()
+
+#f = open("Def.dat", "w") #Can use single quote or double quote. Doesnt matter. A mode r is used to read a file
+#f.write(f"{CLAIM_NUM}\n") #A mode of "w" will overwite
+#f.write(f"{HST_RATE}\n")
+#f.close()
