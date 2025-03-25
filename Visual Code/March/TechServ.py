@@ -55,7 +55,7 @@ while True:
         Desc = input("Enter the item description (End to finish): ").title()
         if Desc == "End":
             break
-        Price = input("Enter the retail price of the item: ")    
+        Price = input("Enter the retail price of the item: ")
         Price = float(Price)
         Qty = input("Enter the quantity purchased: ")
         Qty = int(Qty)
@@ -84,7 +84,7 @@ while True:
     TotalSubtotal = sum(SubtotalLst)
 
     PayDueDate = GetPayDue(CUR_DATE)
-
+    
 
     # Display results
     print()
