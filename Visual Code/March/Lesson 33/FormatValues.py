@@ -1,4 +1,4 @@
-import datetime as DT
+import datetime
 
 def FDollar2(DollarValue):
     # Function will accept a value and format it to $#,###.##.
