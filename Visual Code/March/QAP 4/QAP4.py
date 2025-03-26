@@ -25,6 +25,12 @@ PROV_TERR_LIST = [ "NL", "NS", "PE", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "
 PAY_METH_LIST = [ "Full", "Monthly", "Down Pay" ]
 
 
+ClaimNumLst = []
+ClaimDateLst = []
+ClaimAmtLst = []
+    
+
+
 # Define program functions.
 # See imported library FormatValues
 
@@ -173,21 +179,35 @@ while True:
         else:
             break
 
-    ClaimNumbers = ["CLM-3981-2398", "CLM-6721-1421"]
-    ClaimDates = ["2024-09-13", "2025-01-13"]
-    ClaimAmounts = [2300, 5750]
-    
-    
-    ClaimNum = input("Enter the claim number (CLM-####-####): ").upper()
-    ClaimNumbers.append(ClaimNum)
+
+    while True:
+        Num = input("Enter the claim number (#####): ")
+        if Num.isdigit() and len(Num) == 5:  # Validate input
+            ClaimNumLst.append(Num)
+            print("Updated ClaimNumLst:", ClaimNumLst)  # Debugging
+            break
+        else:
+            print("Invalid claim number. Please enter a 5-digit number.")
+
 
     ClaimDate = input("Enter the claim date (YYYY-MM-DD): ")
-    ClaimDate = DT.datetime.strptime(ClaimDate, "%Y-%m-%d")
-    ClaimDates.append(ClaimDate)
-
-
-    ClaimAmount = float(input("Enter the claim amount: "))
-    ClaimAmounts.append(ClaimAmount)
+    try:
+        ClaimDate = DT.datetime.strptime(ClaimDate, "%Y-%m-%d").date()  # Convert to datetime.date
+        ClaimDateLst.append(ClaimDate)
+        print("Updated ClaimDateLst:", ClaimDateLst)  # Debugging
+    except ValueError:
+        print("Invalid date format. Please enter the date as YYYY-MM-DD.")
+    
+    while True:
+            Amt = input("Enter the claim amount: ")
+            try:
+                Amt = float(Amt)  # Convert to float
+                ClaimAmtLst.append(Amt)
+                print("Updated ClaimAmtLst:", ClaimAmtLst)  # Debugging
+                break
+            except ValueError:
+                print("Invalid amount. Please enter a numeric value.")
+    
 
 
     #Perform required calculations.
@@ -196,6 +216,7 @@ while True:
         NumCars, ExtraLia, GlassCov, LoanCar, DownPay, BASIC_PRE_FEE, ADD_CAR_DIS, EX_LIA_FEE, GLASS_FEE, LOAN_CAR_FEE, HST_RATE
     )
     
+
     PayDueDate = FV.GetPayDue(CUR_DATE)
     CustNameDsp = FName + " " + LName
     TopAddressDsp = StAdd + ", " + City
@@ -208,34 +229,43 @@ while True:
     print(f"                    ONE STOP INSURANCE COMPANY")
     print(f"                         CUSTOMER INVOICE")
     print()
-    print(f"                                          Policy Number:        {POL_NO:>4d}")
-    print(f" Customer Information:                    Invoice Date:   {FV.FDateS(CUR_DATE)}")
-    print(f"     {CustNameDsp:<25s}            Number of Cars Insured: {NumCars:>2d}")
-    print(f"     {TopAddressDsp:<25s}            ---------------------------")
+    print(f"                                            Policy Number:        {POL_NO:>4d}")
+    print(f" Customer Information:                      Invoice Date:   {FV.FDateS(CUR_DATE)}")
+    print(f"     {CustNameDsp:<25s}              Number of Cars Insured: {NumCars:>2d}")
+    print(f"     {TopAddressDsp:<25s}            ----------------------------")
     print(f"     {BottomAddressDsp:<10s}                               OPTIONAL COVERAGES")
-    print(f"     {PhoneNum:<14s}                       Extra Liability: {FV.FDollar2(LiaCost):>10s}")
-    print(f"                                          Glass Coverage:  {FV.FDollar2(GlassCost):>10s}")
-    print(f"                                          Loaner Car:      {FV.FDollar2(GlassCost):>10s}")
+    print(f"     {PhoneNum:<14s}                        Extra Liability: {FV.FDollar2(LiaCost):>10s}")
+    print(f"                                           Glass Coverage:  {FV.FDollar2(GlassCost):>10s}")
+    print(f"                                           Loaner Car:      {FV.FDollar2(GlassCost):>10s}")
     print(f"-----------------------------------------------------------------------")
+
     if PayMeth == "Down Pay":
         print(f" Down Payment:   {FV.FDollar2(DownPay):>10s}               Insurance Premium:{FV.FDollar2(InsPre):>10s}")
     else:
-        print(f"                                                Insurance Premium: {FV.FDollar2(InsPre):>10s}")
+        print(f"                                          Insurance Premium:{FV.FDollar2(InsPre):>10s}")
         
-    if PayMeth == "Down Pay" or "Monthly":
+    if PayMeth == "Down Pay" or PayMeth == "Monthly":
         print(f"                                          Total Extra:      {FV.FDollar2(TotExtraCost):>10s}")
-        print(f" Payment Method:    Monthly              HST:              {FV.FDollar2(HST):>10s}")
+        print(f" Payment Method:    Monthly               HST:              {FV.FDollar2(HST):>10s}")
         print(f" Monthly Amount: {FV.FDollar2(MonPay):>10s}               Total:            {FV.FDollar2(TotCost):>10s}")
     else:
-        print(f"                     Total Extra:     {FV.FDollar2(TotExtraCost):>10s}")
-        print(f"                                   HST: {FV.FDollar2(HST):>10s}")
-        print(f"  Payment Method: Full                                 Total:            {FV.FDollar2(TotCost):>10s}")
+        print(f"                                          Total Extra:      {FV.FDollar2(TotExtraCost):>10s}")
+        print(f"                                          HST:              {FV.FDollar2(HST):>10s}")
+        print(f"  Payment Method: Full                    Total:            {FV.FDollar2(TotCost):>10s}")
 
+    print(f"-----------------------------------------------------------------------")
+    print(f"     Claim #                 Claim Date                 Amount")
+    print(f"-----------------------------------------------------------------------")
 
-    
+# Loop through the lists and print each claim's details
+    for i in range(len(ClaimNumLst)):
+        print(f"       {ClaimNumLst[i]:<10s}        {FV.FDateS(ClaimDateLst[i]):<15s}       {FV.FDollar2(ClaimAmtLst[i]):>10s}")
+
+    print(f"-----------------------------------------------------------------------")
+
 
     # Write the values to a data file for storage.
-
+    print()
     Continue = input("Do you want to process another claim (Y/N): ").upper()
     if Continue == "N":
         break
