@@ -22,7 +22,7 @@ MON_PROC_FEE = 39.99
 CUR_DATE = DT.datetime.now()
 
 PROV_TERR_LIST = [ "NL", "NS", "PE", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU" ]
-PAY_TYPE_LIST = [ "Full", "Monthly", "Down Pay" ]
+PAY_METH_LIST = [ "Full", "Monthly", "Down Pay" ]
 
 
 # Define program functions.
@@ -154,17 +154,17 @@ while True:
 
     DownPay = 0
     while True:
-        PayType = input("What type of payment would the customer like to make (Full, Monthly or Down Pay): ").title()
+        PayMeth = input("What method of payment would the customer like to make (Full, Monthly or Down Pay): ").title()
 
-        if PayType == "":
+        if PayMeth == "":
             print()
-            print("   Data Entry Error - Payment type cannot be blank. ")
+            print("   Data Entry Error - Payment method cannot be blank. ")
             print()
-        elif PayType not in PAY_TYPE_LIST:
+        elif PayMeth not in PAY_METH_LIST:
             print()
-            print("   Data Entry Error - Invalid Payment Type")
+            print("   Data Entry Error - Invalid Payment Method")
             print()
-        elif PayType == "Down Pay":
+        elif PayMeth == "Down Pay":
             print()
             DownPay = input("Enter the amount of the down payment: ")
             print()
@@ -200,48 +200,38 @@ while True:
     CustNameDsp = FName + " " + LName
     TopAddressDsp = StAdd + ", " + City
     BottomAddressDsp = ProvTerr + " " + PostCode
+    PhoneNum = FV.PhoneNumDsp(PhoneNum)
     
     # Display results
 
     print()
-    print(f"         ONE STOP INSURANCE COMPANY")
-    print(f"            CUSTOMER INVOICE")
+    print(f"                    ONE STOP INSURANCE COMPANY")
+    print(f"                         CUSTOMER INVOICE")
     print()
-    print(f"                                   Policy Number: {POL_NO:>4d}")
-    print(f"Customer Information:              Invoice Date: {FV.FDateS(CUR_DATE)}")
+    print(f"                                          Policy Number:        {POL_NO:>4d}")
+    print(f" Customer Information:                    Invoice Date:   {FV.FDateS(CUR_DATE)}")
     print(f"     {CustNameDsp:<25s}            Number of Cars Insured: {NumCars:>2d}")
-    print(f"     {TopAddressDsp:<25s}          ---------------------------------------")
-    print(f"     {BottomAddressDsp:<10s}       OPTIONAL COVERAGES")
-    print(f"     {PhoneNum:<14s}               Extra Liability: {FV.FDollar2(LiaCost):>10s}")
-    print(f"                                   Glass Coverage:  {FV.FDollar2(GlassCost):>10s}")
-    print(f"                                   Loaner Car:      {FV.FDollar2(GlassCost):>10s}")
-    print(f"----------------------------------------------------------------------------")
-    print(f"                                   Insurance Premium:{FV.FDollar2(InsPre):>10s}")
-    print(f"                                   Total Extra Coverages:{FV.FDollar2(TotExtraCost):>10s}")
-    print(f"                                   HST:{FV.FDollar2(HST):>10s}")
-    print(f"                                   Total:{FV.FDollar2(TotCost):>10s}")
+    print(f"     {TopAddressDsp:<25s}            ---------------------------")
+    print(f"     {BottomAddressDsp:<10s}                               OPTIONAL COVERAGES")
+    print(f"     {PhoneNum:<14s}                       Extra Liability: {FV.FDollar2(LiaCost):>10s}")
+    print(f"                                          Glass Coverage:  {FV.FDollar2(GlassCost):>10s}")
+    print(f"                                          Loaner Car:      {FV.FDollar2(GlassCost):>10s}")
+    print(f"-----------------------------------------------------------------------")
+    if PayMeth == "Down Pay":
+        print(f" Down Payment:   {FV.FDollar2(DownPay):>10s}               Insurance Premium:{FV.FDollar2(InsPre):>10s}")
+    else:
+        print(f"                                                Insurance Premium: {FV.FDollar2(InsPre):>10s}")
+        
+    if PayMeth == "Down Pay" or "Monthly":
+        print(f"                                          Total Extra:      {FV.FDollar2(TotExtraCost):>10s}")
+        print(f" Payment Method:    Monthly              HST:              {FV.FDollar2(HST):>10s}")
+        print(f" Monthly Amount: {FV.FDollar2(MonPay):>10s}               Total:            {FV.FDollar2(TotCost):>10s}")
+    else:
+        print(f"                     Total Extra:     {FV.FDollar2(TotExtraCost):>10s}")
+        print(f"                                   HST: {FV.FDollar2(HST):>10s}")
+        print(f"  Payment Method: Full                                 Total:            {FV.FDollar2(TotCost):>10s}")
 
-    #print()
-    #print(f"         ONE STOP INSURANCE COMPANY")
-    #print(f"            CUSTOMER INVOICE")
-    #print(f"One Stop Insurance Company                   Policy Number:             {POL_NO:>4d}")
-    #print(f"Customer Invoice                             Invoice Date:        {FV.FDateS(CUR_DATE)}")
-    #print(f"                                             First Payment Date:   {FV.FDateS(PayDueDate)}")
-    #print(f"--------------------------------------------------------------------------------")
-    #print(f"Customer Information:                        {CustNameDsp:<25s}")
-    #print(f"                                             {TopAddressDsp:<25s}")
-    #print(f"                                             {BottomAddressDsp:<10s}")
-    #print(f"                                             {PhoneNum:<14s}")
-    #print(f"--------------------------------------------------------------------------------")
-    #print(f"Number of Cars Insured: {NumCars:>2d}     Extra Liability Charge: {FV.FDollar2(LiaCost):>10s}")
-    #print(f"Payment Type: {PayType:<8s}               Glass Coverage Charge:  {FV.FDollar2(GlassCost):>10s}")
-    
-    #if PayType == "Down Pay":
-        #print(f"Down Payment: {FV.FDollar2(DownPay):>10s}  Loaner Car Charge:      {FV.FDollar2(GlassCost):>10s}")
-    #else:
-        #print(f"                                          Loaner Car Charge:      {FV.FDollar2(GlassCost):>10s}")
-    
-    #print(f"Insurance Premium:   ")
+
     
 
     # Write the values to a data file for storage.
