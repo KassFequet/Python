@@ -1,4 +1,4 @@
-import datetime as DT
+import datetime
 
 def FDollar2(DollarValue):
     # Function will accept a value and format it to $#,###.##.
@@ -79,13 +79,6 @@ def FDateL(DateValue):
 
     return DateValueStr
 
-def PhoneNumDsp(PhoneNum):
-    #Function that will concatenate a phone number to the format (###) ###-####
-    
-    PhoneNum = "(" + PhoneNum[0:3] + ") " + PhoneNum[3:6] + "-" + PhoneNum[6:10]
-    
-    return PhoneNum
-
 def GetPayDue(InvoiceDate):
     # Determine the payment date based on 20 days after the invoice date
     # or the first day of the next month - whichever is later.
@@ -110,9 +103,8 @@ def GetPayDue(InvoiceDate):
 
     return PayDate
 
-def GetInsCosts(NumCars, ExtraLia, GlassCov, LoanCar, DownPay, BASIC_PRE_FEE, ADD_CAR_DIS, EX_LIA_FEE, GLASS_FEE, LOAN_CAR_FEE, HST_RATE):
-    # Calculate the costs neccesary for the Insurance Invoice and return the calculations.
-    #(Insurance Premium, Extra Liability Cost, Glass Coverage Cost, Loaner Car Cost, Total Extra Costs, Total Insurance Premium, HST, Total Cost & Monthly Payments)
+def calculate_insurance_costs(NumCars, ExtraLia, GlassCov, LoanCar, DownPay, BASIC_PRE_FEE, ADD_CAR_DIS, EX_LIA_FEE, GLASS_FEE, LOAN_CAR_FEE, HST_RATE):
+    # Perform required calculations
     if NumCars == 1:
         InsPre = BASIC_PRE_FEE
     else:
